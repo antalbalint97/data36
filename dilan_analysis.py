@@ -43,8 +43,7 @@ def parse_read_event(fields, i):
             'country': country,
             'user_id': user_id,
             'topic': topic,
-            'is_returning': True
-            # Exclude 'source' key completely
+            'is_returning': True           
         }, 5
 
 def parse_subscribe_event(fields, i):
@@ -77,7 +76,7 @@ def parse_log_file(file_path):
                         record, step = parse_buy_event(fields, i)
                         buy_rows.append(record)
                     else:
-                        step = 1  # Unknown or corrupted event
+                        step = 1
                     i += step
                 except IndexError:
                     break
@@ -93,7 +92,6 @@ def clean_read_df(rows):
     first_time_df.to_csv("clean_read_first_time.csv", index=False)
     returning_df.to_csv("clean_read_returning.csv", index=False)
 
-    # Optionally return merged full df for validation / downstream use
     df.to_csv("clean_read.csv", index=False)
     return df
 

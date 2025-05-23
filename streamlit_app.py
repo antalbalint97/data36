@@ -43,7 +43,7 @@ subscribe_df_f = apply_filters(subscribe_df)
 buy_df_f = apply_filters(buy_df)
 
 # === KPIs ===
-st.title("Dilan's Travel Blog Funnel Dashboard")
+st.title("Dilan's Travel Blog Dashboard")
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Reads", len(read_df_f))
 col2.metric("Unique Readers", read_df_f['user_id'].nunique())
@@ -72,7 +72,7 @@ fig1 = px.bar(
 fig1.update_traces(
     marker_color='steelblue',
     textposition='outside',
-    textfont=dict(size=22, color='dimgray')  # Bigger, readable numbers
+    textfont=dict(size=22, color='dimgray')
 )
 
 fig1.update_layout(
@@ -82,7 +82,7 @@ fig1.update_layout(
     title_x=0.5,
     plot_bgcolor='white',
     margin=dict(t=60, b=40, l=40, r=40),
-    font=dict(size=16)  # Controls axis and tick label size
+    font=dict(size=16)
 )
 st.markdown("""
 ### Reddit generated the highest volume of first-time readers.  
@@ -247,7 +247,7 @@ funnel_data = pd.DataFrame({
 funnel_data = funnel_data.sort_values(by='Users', ascending=False)
 fig4 = px.funnel(funnel_data, x='Users', y='Stage', title='User Conversion Funnel')
 fig4.update_traces(
-    textfont_size=20  # Increase value label size
+    textfont_size=20
 )
 
 fig4.update_layout(
@@ -288,7 +288,6 @@ st.markdown("Retention falls sharply after Day 1. A drip email campaign or retar
 # === Retention & Churn Line Chart ===
 st.subheader("User Retention and Churn Trends")
 
-# Data setup
 days = [1, 7, 14, 30]
 ret_vals = [ret_day[d] * 100 for d in days]
 churn_vals = [churn_day[d] * 100 for d in days]
@@ -375,7 +374,6 @@ st.markdown(f"`{top_roi['Source']}` delivered the highest ROI (**{top_roi['ROI (
 # === ROI chart ===
 st.subheader("Why Reddit Should Lead the Marketing Mix")
 
-# Filter absolute metrics
 abs_metrics = roi_df[['Source', 'Revenue', 'Buyers']].melt(id_vars='Source', var_name='Metric', value_name='Value')
 abs_metrics = abs_metrics.sort_values(by='Value', ascending=False)
 
