@@ -1,0 +1,85 @@
+=== BASIC STRUCTURE & NULLS ===
+
+READ DF SHAPE: (581877, 7)
+read nulls:
+datetime             0
+event_type           0
+country              0
+user_id              0
+source          371854
+topic                0
+is_returning         0
+read dtypes:
+datetime        datetime64[ns]
+event_type              object
+country                 object
+user_id                 object
+source                  object
+topic                   object
+is_returning              bool
+
+SUBSCRIBE DF SHAPE: (7618, 3)
+subscribe nulls:
+datetime      0
+event_type    0
+user_id       0
+subscribe dtypes:
+datetime      datetime64[ns]
+event_type            object
+user_id               object
+
+BUY DF SHAPE: (8407, 4)
+buy nulls:
+datetime      0
+event_type    0
+user_id       0
+price         0
+buy dtypes:
+datetime      datetime64[ns]
+event_type            object
+user_id               object
+price                  int64
+
+=== UNIQUE VALUES IN READ_DF ===
+Countries: country_7, country_8, country_6, country_2, country_5, country_4, country_3, country_1
+Sources: SEO, AdWords, Reddit
+Topics: North America, South America, Africa, Europe, Asia, Australia
+
+=== VALUE CHECKS ===
+Invalid countries: 0
+Invalid sources: 371854
+
+=== DUPLICATE CHECKS ===
+Duplicate read events: 0
+Duplicate subscriptions: 0
+
+=== USER ACTIVITY ===
+Reads per user (top 10):
+user_id
+2458174315    58
+2458280511    52
+2458197594    52
+2458203397    52
+2458284001    52
+2458194192    50
+2458179454    50
+2458245790    49
+2458158385    48
+2458153661    48
+Subscribers not in read_df: 0
+Buyers not in read_df: 0
+Buyers not in subscribe_df: 1572
+
+=== PRICE & TIMEFRAME ===
+Price distribution:
+price
+8     6640
+80    1767
+Read timeframe: 2018-01-01 00:01:01 -> 2018-03-31 05:04:50
+Subscribe timeframe: 2018-01-01 00:07:41 -> 2018-03-30 23:48:48
+Buy timeframe: 2018-01-01 04:04:59 -> 2018-03-30 23:56:01
+
+=== UNIQUENESS IN READ_DF ===
+Total reads: 581877
+Unique user-topic pairs: 353631
+Unique user-country pairs: 210023
